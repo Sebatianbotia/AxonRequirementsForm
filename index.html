@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levantamiento Técnico | HomeLife Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sales-app">
+        <header class="sales-header">
+            <div class="logo">HomeLife <span>Software</span></div>
+            <h1>Levantamiento de Requerimientos</h1>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p id="stepIndicator">Paso 1 de 7</p>
+        </header>
+
+        <form id="salesForm" name="requerimiento-tecnico-v2" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="requerimiento-tecnico-v2" />
+
+            <section class="form-step active" data-step="1">
+                <h2>1. Visión del Negocio</h2>
+                <div class="input-group">
+                    <label>Empresa / Cliente</label>
+                    <input type="text" name="empresa" placeholder="Nombre legal" required>
+                </div>
+                <div class="input-group">
+                    <label>Problema que resuelve (El "Dolor")</label>
+                    <textarea name="dolor_negocio" placeholder="¿Por qué necesitan este software ahora mismo?"></textarea>
+                </div>
+            </section>
+
+            <section class="form-step" data-step="2">
+                <h2>2. Ecosistema Digital</h2>
+                <label class="label-main">Plataformas Requeridas</label>
+                <div class="checkbox-grid">
+                    <label class="check-card"><input type="checkbox" name="plat_web"> <span>Web App (Panel)</span></label>
+                    <label class="check-card"><input type="checkbox" name="plat_ios"> <span>App iOS</span></label>
+                    <label class="check-card"><input type="checkbox" name="plat_android"> <span>App Android</span></label>
+                    <label class="check-card"><input type="checkbox" name="plat_desktop"> <span>Desktop (Win/Mac)</span></label>
+                </div>
+                <div class="input-group">
+                    <label>¿Requiere modo Offline?</label>
+                    <select name="offline_mode">
+                        <option value="no">No, 100% conexión constante</option>
+                        <option value="si">Sí, debe funcionar sin internet y sincronizar luego</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="form-step" data-step="3">
+                <h2>3. Usuarios y Roles</h2>
+                <div class="input-group">
+                    <label>Usuarios Estimados (Mensuales)</label>
+                    <select name="volumen_usuarios">
+                        <option value="interno">Interno (1-50 usuarios)</option>
+                        <option value="pyme">Escala Media (50-2000 usuarios)</option>
+                        <option value="masivo">Escala Masiva (2000+ usuarios)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Roles de Usuario (Separa por comas)</label>
+                    <input type="text" name="roles" placeholder="Ej: Admin, Vendedor, Cliente, SuperUser">
+                </div>
+            </section>
+
+            <section class="form-step" data-step="4">
+                <h2>4. Integraciones Externas</h2>
+                <div class="input-group">
+                    <label>Pasarelas de Pago</label>
+                    <input type="text" name="pagos" placeholder="Ej: Stripe, PayU, Wompi, No aplica">
+                </div>
+                <div class="input-group">
+                    <label>Servicios de Terceros (APIs)</label>
+                    <textarea name="apis" placeholder="Ej: Google Maps, WhatsApp Business, SAP, Salesforce, Facturación Electrónica"></textarea>
+                </div>
+            </section>
+
+            <section class="form-step" data-step="5">
+                <h2>5. Interfaz y Experiencia</h2>
+                <div class="input-group">
+                    <label>Estado del Diseño</label>
+                    <select name="design_state">
+                        <option value="idea">Solo es una idea / Sketch</option>
+                        <option value="wireframes">Tengo Wireframes básicos</option>
+                        <option value="figma">Tengo diseño final en Figma/Adobe XD</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Referencia Visual</label>
+                    <input type="text" name="referencia" placeholder="URL de una web o app que les guste">
+                </div>
+            </section>
+
+            <section class="form-step" data-step="6">
+                <h2>6. Inversión y Tiempos</h2>
+                <div class="input-group">
+                    <label>Presupuesto Máximo Disponible (USD)</label>
+                    <div class="currency-input">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" name="budget" placeholder="Ej: 12000" min="0" step="100">
+                    </div>
+                    <small class="helper-text">Ingrese el monto total destinado para este proyecto.</small>
+                </div>
+                <div class="input-group">
+                    <label>Deadline (Meses/Fecha)</label>
+                    <input type="text" name="timeline" placeholder="Ej: 3 meses / Salida en Diciembre">
+                </div>
+            </section>
+
+            <section class="form-step" data-step="7">
+                <div class="success-preview">
+                    <div class="check-icon">📝</div>
+                    <h2>Confirmación Final</h2>
+                    <p>Has completado el levantamiento. ¿Los requerimientos son claros para el equipo de desarrollo?</p>
+                    <div class="warning-box">
+                        Recuerda: Un mal requerimiento hoy es un sobrecosto mañana.
+                    </div>
+                </div>
+            </section>
+
+            <div class="form-navigation">
+                <button type="button" id="prevBtn" class="btn-secondary" style="display:none;">Anterior</button>
+                <button type="button" id="nextBtn" class="btn-primary">Siguiente</button>
+                <button type="submit" id="submitBtn" class="btn-primary btn-submit-final" style="display:none;">Enviar a Ingeniería</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
